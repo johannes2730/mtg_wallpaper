@@ -24,7 +24,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Wähle hier die Python-Version, die du verwendest
+          python-version: '3.12.7'  # Wähle hier die Python-Version, die du verwendest
 
       # Installation der Abhängigkeiten
       - name: Install dependencies

@@ -1,0 +1,38 @@
+name: Python Linting
+
+# Workflow wird bei jedem Push oder Pull Request auf die Haupt- oder Entwicklungsbranch ausgeführt
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout des Repositories
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Setup von Python (du kannst die Python-Version anpassen)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'  # Wähle hier die Python-Version, die du verwendest
+
+      # Installation der Abhängigkeiten
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8
+
+      # Führe flake8 für das gesamte Projekt aus
+      - name: Run flake8
+        run: |
+          flake8 .

@@ -31,6 +31,6 @@ jobs:
           jupyter execute ./mtg_project.ipynb
       - name: Run flake8
         run: |
-          flake8 .
+          flake8 . --count --select=E,W,F --max-line-length=79 --statistics
           
 
